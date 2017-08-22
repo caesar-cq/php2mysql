@@ -11,13 +11,13 @@
 <?php
 	include 'connection.php';
 
-	$sql ="select * from stuff_room where stuff_name=".$_GET[stuffId]." "; 
+	$sql ="select * from stuff_room where stuff_id=".$_GET[stuffId]." "; 
 	echo "sql:".$sql;
 	$result = mysql_query($sql); 
 
-	if(!$sql){
+	if(!$sql) {
 		printf("error:sql");
-	} else if(!$result){
+	} else if(!$result) {
 		printf("error:result");
 	}
 

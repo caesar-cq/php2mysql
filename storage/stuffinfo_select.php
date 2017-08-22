@@ -3,8 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="../storage/bootstrap.min.css" rel="stylesheet">
+	<script src="../storage/jquery.min.js"></script>
+	<script src="../storage/bootstrap.min.js"></script>
 <?php
 error_reporting(0);
 $mode = $_GET['mode'];
@@ -35,7 +36,7 @@ table.hovertable th {
 }
 table.hovertable tr {
 	background-color:#d4e3e5;
-}
+} 
 table.hovertable td {
 	border-width: 1px;
 	padding: 8px;
@@ -44,16 +45,16 @@ table.hovertable td {
 }
 </style>
 <body>
-
+<h1 align="center"><?php echo $type?>记录</h1>
 <div  align="center">
 	&nbsp;
-	<table align="center" width="70%" class="hovertable">
+	<table align="center" width="70%" class="hovertable" style="font-size: 20px; font-family:黑体;  text-align: center;" >
 		<tr>
-			<th>编号</th>
-			<th>物品名</th>
-			<th><?php echo "$type";?></th>
-			<th>地点</th>
-			<th>操作</th>
+			<th style="text-align:center;">编号</th>
+			<th style="text-align:center;">物品名</th>
+			<th style="text-align:center;"><?php echo "$type";?></th>
+			<th style="text-align:center;"><?php if($mode == "out"){echo "目的地";}else if($mode == "in"){echo "月台";} ?></th>
+			<th style="text-align:center;">操作</th>
 		</tr>
 		<?php 
 		include 'connection.php';
@@ -101,23 +102,37 @@ table.hovertable td {
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
+			        &times;
+				</button>  
 				<h4 class="modal-title" id="myModalLabel">
 					信息添加
 				</h4>
 			</div>
 			<div class="modal-body">
-				<form action="stuffinfo_insert.php?mode=<?php echo $mode ?>" method="post">
+				<form action="stuffinfo_insert.php?mode=<?php echo $mode ?>" method="post" style="font-size:16px;">
 					<h3></h3>
-					<label for="sid">记录编号：  </label><br>
-					<input type="text" name="stuffId" id="sid" value="<?php echo $i+1; ?>" /> <br/>
-					<label for="sname">货品名称：</label><br>
-					<input type="text" name="stuffName" id="sname"/><br/>
-					<label for="stype">进 / 出库：</label><br>
-					<input type="text" name="stuffType" id="stype" value="<?php echo $mode; ?>"/><br/>
-					<label for="sloc">货品地点：  </label><br>
-					<input type="text" name="stuffLocation" id="slo"/><br/>
+					<label for="sid">记录编号：  </label>
+					<br>
+						<input type="text" name="stuffId" id="sid" value="<?php echo $i+1; ?>" /> 
+					<br/>
+					<label for="sname">货品名称：</label>
+					<br>
+						<select id="sname" name="stuffName" style="width: 200px; height: 31px;" >
+						  <option value="">------请选择货物------</option>
+						  <option value="苹果">苹果</option>
+						  <option value="西瓜">西瓜</option>
+						  <option value="橘子">橘子</option>
+						  <option value="香蕉">香蕉</option>
+						</select>
+					<br/>
+					<label for="stype">进/出入库：</label>
+					<br>
+						<input type="text" name="stuffType" id="stype" value="<?php echo $mode; ?>"/>
+					<br/>
+					<label for="sloc"><?php if($mode == "out"){echo "目的地";}else if($mode = "in"){echo "月台";}?></label>
+					<br>
+						<input type="text" name="stuffLocation" id="slo"/>
+					<br/>
 					<br>
 					<input type="submit"  value="添加任务" class="btn btn-primary btn-small"/>
 				</form>
@@ -127,7 +142,6 @@ table.hovertable td {
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
-	</form>
 	</div><!-- /.modal -->
 </div>
 
