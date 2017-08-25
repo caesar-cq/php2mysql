@@ -7,19 +7,20 @@
 <body>
 <script type="text/javascript">
 <?php 
+	include'connection.php';
 	$stuffId = $_POST[stuffId];
 	$stuffName = $_POST[stuffName];
 	$stuffType = $_POST[stuffType];
 	$stuffLocation = $_POST[stuffLocation];
 
-	$conn = mysql_connect("localhost","root","root");
+	
 
 	mysql_query("set names 'utf8'");
 
 	//connect db
 	mysql_select_db("warehousedb");
 
-	$sql = "update stuff_room set stuff_name='".$stuffName."',stuff_type='".$stuffType."',stuff_location=".$stuffLocation." where stuff_id='".$stuffId."'";
+	$sql = "update ".$table_name." set stuff_name='".$stuffName."',stuff_type='".$stuffType."',stuff_location=".$stuffLocation." where stuff_id='".$stuffId."'";
 	mysql_query($sql);
 	$mark  = mysql_affected_rows();//返回影响行数
 	$url = "stuffinfo_select.php";  
@@ -27,7 +28,6 @@
 	if($mark>0){
 		
 		echo  "alert('修改成功')";
-		
 		
 	}else{
 		echo  "alert('修改失败')";

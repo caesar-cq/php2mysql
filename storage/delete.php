@@ -4,7 +4,7 @@ include'connection.php';
 $stuffId = $_GET['stuffId'];
 $mode = $_GET['mode'];
 
-$sql = "delete from stuff_room where stuff_id= ".$stuffId." ";
+$sql = "delete from ".$table_name." where stuff_id= ".$stuffId." ";
 
 mysql_query($sql); 
 

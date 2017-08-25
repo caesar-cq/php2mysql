@@ -5,6 +5,9 @@
 	DEFINE('DB_PASSWORD','root');
 	DEFINE('DB_HOST','localhost');
 	DEFINE('DB_NAME','warehousedb');
+
+	$table_name ="stuff_room";
+
 	$mysql = mysql_connect(DB_HOST,DB_USER,DB_PASSWORD);
 	$db_selected = mysql_select_db(DB_NAME);
 	

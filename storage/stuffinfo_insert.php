@@ -16,7 +16,7 @@ if($stuffName != null){
 	echo "进/ 出库：".$stuffType."<br/>";
 	echo "货品地点：".$stuffLocation."<br/>";
 	include 'connection.php';
-	$sql = "insert into stuff_room (stuff_id,stuff_name,stuff_type,stuff_location)  values('$stuffId','$stuffName','$stuffType','$stuffLocation')";
+	$sql = "insert into ".$table_name." (stuff_id,stuff_name,stuff_type,stuff_location)  values('$stuffId','$stuffName','$stuffType','$stuffLocation')";
 
 	if (!mysql_query($sql))
 	{

@@ -11,7 +11,7 @@
 <?php
 	include 'connection.php';
 
-	$sql ="select * from stuff_room where stuff_id=".$_GET[stuffId]." "; 
+	$sql ="select * from ".$table_name." where stuff_id=".$_GET[stuffId]." "; 
 	echo "sql:".$sql;
 	$result = mysql_query($sql); 
 

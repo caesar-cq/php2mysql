@@ -58,7 +58,7 @@ table.hovertable td {
 		</tr>
 		<?php 
 		include 'connection.php';
-		$sql= "select * from stuff_room";
+		$sql= "select * from ".$table_name."";
 		$result =  mysql_query($sql);
 		while($row=mysql_fetch_array($result)){
 			$i = $row[stuff_id];
